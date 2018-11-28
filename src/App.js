@@ -1,30 +1,24 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import Articles from './Articles'
+
+import { ApolloClient, ApolloProvider } from 'react-apollo'
+
 import './App.css';
+
+const client = new ApolloClient()
 
 class App extends Component {
   render() {
-    fetch("/api/users")
-      .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.log(err))
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <ApolloProvider client={client}>
+        <div className="App">
+          <header className="App-header">
+              Learn React
+          </header>
+          <Articles />
+        </div>
+      </ApolloProvider>
     );
   }
 }
