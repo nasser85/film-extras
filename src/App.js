@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import Articles from './Articles'
 
-import { ApolloClient, ApolloProvider } from 'react-apollo'
+import { ApolloProvider } from 'react-apollo'
+import ApolloClient from 'apollo-boost'
 
 import './App.css';
 

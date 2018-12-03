@@ -1,11 +1,13 @@
 import React from 'react'
-import { gql, graphql } from 'react-apollo'
+import { graphql } from 'react-apollo'
+import gql from "graphql-tag"
 
 const Articles = ({ data: { loading, error, articles }}) => {
 	if (loading || error) {
 		return loading ? <p>Loading...</p>
 		               : <p>Error</p>
 	}
+		console.log(loading, error, articles)
 	return (
 		<ul>
 			{ articles.map ( (item, index) => 
@@ -27,4 +29,4 @@ export const articlesListQuery = gql`
 	}
 `
 
-export default graphql(articlesListQuery)Articles
+export default graphql(articlesListQuery)(Articles)
