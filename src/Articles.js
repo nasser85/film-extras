@@ -1,4 +1,5 @@
 import React from 'react'
+import { SingleArticle } from "./SingleArticle"
 import { graphql } from 'react-apollo'
 import gql from "graphql-tag"
 
@@ -10,9 +11,7 @@ const Articles = ({ data: { loading, error, articles }}) => {
 		console.log(loading, error, articles)
 	return (
 		<ul>
-			{ articles.map ( (item, index) => 
-				(<li key={index}>{item.title}</li>)
-			) }
+			{ articles.map ( (item, index) => <SingleArticle key={index} image={item.multimedia[0].url} caption={item.multimedia[0].caption} /> ) }
 		</ul>
 	)
 }
@@ -25,6 +24,10 @@ export const articlesListQuery = gql`
 			title
 			url
 			byline
+			multimedia {
+				url
+				caption
+			}
 		}
 	}
 `
